@@ -1,4 +1,4 @@
-package learnprogramming;
+// package learnprogramming;
 
 public class Product extends Category{
     private double discount_normal;

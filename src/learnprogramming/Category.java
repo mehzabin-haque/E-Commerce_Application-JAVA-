@@ -1,6 +1,7 @@
-package learnprogramming;
+// package learnprogramming;
 
 public class Category {
+    public static final Category Electronics = null;
     private String category_name;
     private int category_id;
 
