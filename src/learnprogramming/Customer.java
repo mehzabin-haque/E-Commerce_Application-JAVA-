@@ -42,7 +42,7 @@ public class Customer {
         this.wallet_amt+=amt;
         System.out.println("Amount successfully added.");
     }
-
+   
     public double getWallet_amt() {
         return wallet_amt;
     }
@@ -51,13 +51,17 @@ public class Customer {
         System.out.print("CURRENT STATUS: ");
         if(this.current_status==2){
             System.out.println("ELITE");
+            // return "ELITE";
         }
         else if(this.current_status==1){
             System.out.println("PRIME");
+            // return "PRIME";
         }
         else if(this.current_status==0){
             System.out.println("NORMAL");
+            // return "NORMAL";
         }
+        // return "INVALID";
     }
 
     // by default current status of customer is normal which is 0;

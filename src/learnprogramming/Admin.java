@@ -123,4 +123,11 @@ public class Admin {
         arr.add(p3);
         Store.Deals.put(it,arr);
     }
+
+    public static boolean admin_Search(String name, String password) {
+        if((name=="Vidur" && password=="2021364") || (name=="A" && password=="A")){
+            return true;
+        }
+        return false;
+    }
 }
