@@ -10,6 +10,7 @@ public class Customer {
     private double wallet_amt;
     private double status_discount;
     private int current_status;
+    private int customerId;
     private ArrayList<Integer> coupons=new ArrayList<>();
 
     private HashMap<Double, Product> cart_Prod = new HashMap<>();
@@ -73,6 +74,7 @@ public class Customer {
         this.wallet_amt=1000; //by default it is set to 1000;
         this.status_discount=0; //by default 0% since wew are normal
         this.current_status=0; //by default 0 since wew are normal status
+        this.customerId = Store.Customer_record.size();
     }
 
 
@@ -154,6 +156,10 @@ public class Customer {
             }
         }
     }
+
+    // public Boolean verify_coupon(){
+
+    // }
     public void delivery(){
         if(this.current_status==0){
             System.out.println("Order placed. It will be delivered in 7-10 days.");
@@ -186,5 +192,13 @@ public class Customer {
             }
         }
         return true;
+    }
+
+    public int getCustomerId() {
+        return customerId;
+    }
+
+    public void customerSignUp() {
+        Main.customer_sign_up();
     }
 }

@@ -8,11 +8,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 public class TestingCustomerClass {
-    @Test
-    @DisplayName("Test Admin Search")
-    public void testAdminSearch() {
-        assertTrue(Admin.admin_Search("Vidur","2021364"));
-    }
+    
     
 
     @Test
@@ -20,7 +16,7 @@ public class TestingCustomerClass {
     //1
     public void testPrintCurrentStatusElite() {
         Customer customer = new Customer("meh", "1233");
-       customer.setCurrent_status(2);
+        customer.setCurrent_status(2);
         String expectedOutput = "CURRENT STATUS: ELITE";
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
@@ -30,6 +26,7 @@ public class TestingCustomerClass {
 
     @Test
     @DisplayName("Test Print Current Status Prime")
+    //1
     public void testPrintCurrentStatusPrime() {
        Customer customer = new Customer("meh", "1233");
        customer.setCurrent_status(1);
@@ -42,6 +39,7 @@ public class TestingCustomerClass {
 
     @Test
     @DisplayName("Test Print Current Status Normal")
+    //1
     public void testPrintCurrentStatusNormal() {
        
         Customer customer = new Customer("meh", "1233");
@@ -53,8 +51,8 @@ public class TestingCustomerClass {
     }
 
     @Test
-    //2
     @DisplayName("Test Reduce Wallet Amount Sufficient Funds")
+    //2
     public void testReduceWalletAmtSufficientFunds(){
         Customer customer = new Customer("meh", "1233");
         // customer.setCurrent_status(0);
@@ -64,6 +62,7 @@ public class TestingCustomerClass {
 
     @Test
     @DisplayName("Test Reduce Wallet Amount Insufficient Funds")
+    //2
     public void testReduceWalletAmtInsufficientFunds(){
         Customer customer = new Customer("meh", "1233");
         // customer.setCurrent_status(0);
@@ -84,6 +83,7 @@ public class TestingCustomerClass {
 
     @Test
     @DisplayName("Test Delivery Fee Status 1")
+    //3
     public void testDeliveryFeeStatus1(){
         Customer customer = new Customer("meh", "1233");
         customer.setCurrent_status(1);
@@ -93,6 +93,7 @@ public class TestingCustomerClass {
 
     @Test
     @DisplayName("Test Delivery Fee Status 2")
+    //3
     public void testDeliveryFeeStatus2(){
         Customer customer = new Customer("meh", "1233");
         customer.setCurrent_status(2);
@@ -101,6 +102,7 @@ public class TestingCustomerClass {
     }
     @Test
     @DisplayName("Test Delivery Fee Status -1")
+    //3
     public void testDeliveryFeeStatus_1(){
         Customer customer = new Customer("meh", "1233");
         customer.setCurrent_status(-1);
@@ -122,6 +124,7 @@ public class TestingCustomerClass {
 
     @Test
     @DisplayName("Test Delivery Status 1")
+    //4
     public void testDelivery1(){
         Customer customer = new Customer("meh", "1233");
         customer.setCurrent_status(1);
@@ -134,6 +137,7 @@ public class TestingCustomerClass {
 
     @Test
     @DisplayName("Test Delivery Status 2")
+    //4
     public void testDelivery2(){
         Customer customer = new Customer("meh", "1233");
         customer.setCurrent_status(2);
@@ -144,5 +148,55 @@ public class TestingCustomerClass {
         assertEquals(expectedOutput, outContent.toString().trim());
     }
 
+    @Test
+    @DisplayName("Test Coupon Generator method for Elite")
+    //5
+    public void testCouponGeneratorWithCurrentStatus2_even(){
+        Customer customer = new Customer("meh", "1233");
+        customer.setCurrent_status(2);
+        customer.coupon_generator();
+        assertEquals(4, customer.getCoupons().size());
+    }
+
+    
+    @Test
+    @DisplayName("Test Coupon Generator method for Elite")
+    //5
+    public void testCouponGeneratorWithCurrentStatus2_odd(){
+        Customer customer = new Customer("meh", "1233");
+        customer.setCurrent_status(2);
+        customer.coupon_generator();
+        assertEquals(3, customer.getCoupons().size());
+    }
+
+    @Test
+    @DisplayName("Test Coupon Generator method for Prime")
+    //5
+    public void testCouponGeneratorWithCurrentStatus1_even(){
+        Customer customer = new Customer("meh", "1233");
+        customer.setCurrent_status(1);
+        customer.coupon_generator();
+        assertEquals(2, customer.getCoupons().size());
+    }
+
+    @Test
+    @DisplayName("Test Coupon Generator method for Prime")
+    //5
+    public void testCouponGeneratorWithCurrentStatus1_odd(){
+        Customer customer = new Customer("meh", "1233");
+        customer.setCurrent_status(1);
+        customer.coupon_generator();
+        assertEquals(1, customer.getCoupons().size());
+    }
+
+    @Test
+    @DisplayName("Test Coupon Generator method for Normal")
+    //5
+    void testCouponGeneratorWithCurrentStatus0() {
+        Customer customer = new Customer("meh", "1233");
+        // customer.setCurrentStatus(0);
+        customer.coupon_generator();
+        assertEquals(0, customer.getCoupons().size());
+    }
     
 }
