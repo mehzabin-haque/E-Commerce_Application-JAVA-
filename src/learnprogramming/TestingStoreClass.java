@@ -1,11 +1,7 @@
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import static org.junit.Assert.*;
-
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 import java.util.ArrayList;
 
 public class TestingStoreClass {
@@ -13,50 +9,44 @@ public class TestingStoreClass {
     @Test
     @DisplayName("Test Category Search Returns True For Existing Category")
     // 1
-    public void testCategorySearchReturnsTrueForExistingCategoryId() {
-        // Arrange
+    public void testCategorySearch_true() {
+
         int categoryId = 1;
         Category category = new Category("Electronics", categoryId);
         ArrayList<Product> products = new ArrayList<>();
         products.add(new Product("Electronics", categoryId, 1, "Laptop", 1000, 20, "Test"));
         Store.Category_product.put(category, products);
 
-        // Act
         boolean result = Store.category_Search(categoryId);
 
-        // Assert
         assertTrue(result);
     }
 
     @Test
     @DisplayName("Test Category Search Returns False For Non Existing Category")
     // 1
-    public void testCategorySearchReturnsFalseForNonExistingCategoryId() {
-        // Arrange
+    public void testCategorySearch_false() {
+        
         int categoryId = 1;
         Category category = new Category("Electronics", categoryId);
         ArrayList<Product> products = new ArrayList<>();
         products.add(new Product("Electronics", categoryId, 1, "Laptop", 1000, 20, "Test"));
         Store.Category_product.put(category, products);
 
-        // Act
-        boolean result = Store.category_Search(2);
+        boolean result = Store.category_Search(6);
 
-        // Assert
         assertFalse(result);
     }
 
     @Test
     @DisplayName("Test Category Search Returns False For Empty CategoryProductMap")
     // 1
-    public void testCategorySearchReturnsFalseForEmptyCategoryProductMap() {
-        // Arrange
+    public void testCategorySearch_emptyMap_false() {
+        
         Store.Category_product.clear();
 
-        // Act
         boolean result = Store.category_Search(1);
 
-        // Assert
         assertFalse(result);
     }
 
@@ -65,10 +55,9 @@ public class TestingStoreClass {
     // 2
     public void testCustomerSearch() {
 
-        // Create some test customers
-        Customer c1 = new Customer("Alice", "password1");
-        Customer c2 = new Customer("Bob", "password2");
-        Customer c3 = new Customer("Charlie", "password3");
+        Customer c1 = new Customer("ted", "123");
+        Customer c2 = new Customer("robin", "456");
+        Customer c3 = new Customer("lily", "789");
 
         // Add the customers to the store's record
         Store.Customer_record.put(1, c1);
@@ -91,10 +80,9 @@ public class TestingStoreClass {
     // 2
     public void testCustomerSearch_False() {
 
-        // Create some test customers
-        Customer c1 = new Customer("Alice", "password1");
-        Customer c2 = new Customer("Bob", "password2");
-        Customer c3 = new Customer("Charlie", "password3");
+        Customer c1 = new Customer("ted", "123");
+        Customer c2 = new Customer("robin", "456");
+        Customer c3 = new Customer("lily", "789");
 
         // Add the customers to the store's record
         Store.Customer_record.put(1, c1);
@@ -115,7 +103,7 @@ public class TestingStoreClass {
     @Test
     @DisplayName("Test Product Search Returns True For Existing Product")
     //3
-    public void testProdSea() {
+    public void testProdSea_true() {
         // create some test products
         Category category = new Category("Books", 0);
         Product p1 = new Product("Books", 0, 0, "Bok Bok", 10.0, 2, "Irritating");
@@ -136,7 +124,7 @@ public class TestingStoreClass {
     @Test
     @DisplayName("Test Product Search Returns False For Non-Existing Product")
     //3
-    public void testProdSea_False() {
+    public void testProdSea_false() {
         // create some test products
         Category category = new Category("Books", 0);
         Product p1 = new Product("Books", 0, 0, "Bok Bok", 10.0, 2, "Irritating");

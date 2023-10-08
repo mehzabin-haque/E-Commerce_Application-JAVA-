@@ -1,5 +1,4 @@
 import org.junit.Test;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 
 import static org.junit.Assert.*;
@@ -111,7 +110,7 @@ public class TestingCustomerClass {
     }
 
     @Test
-    @DisplayName("Test Delivery Status 0")
+    @DisplayName("Test Delivery Update for Normal")
     //4
     public void testDelivery(){
         Customer customer = new Customer("meh", "1233");
@@ -123,7 +122,7 @@ public class TestingCustomerClass {
     }
 
     @Test
-    @DisplayName("Test Delivery Status 1")
+    @DisplayName("Test Delivery Status Update for Prime")
     //4
     public void testDelivery1(){
         Customer customer = new Customer("meh", "1233");
@@ -136,7 +135,7 @@ public class TestingCustomerClass {
     }
 
     @Test
-    @DisplayName("Test Delivery Status 2")
+    @DisplayName("Test Delivery Status Update for Elite")
     //4
     public void testDelivery2(){
         Customer customer = new Customer("meh", "1233");
